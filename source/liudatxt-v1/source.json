@@ -1,0 +1,78 @@
+{
+	"name": "溜达小说",
+	"version": 1,
+	"id": "www.liudatxt.net",
+	"nsfw": 0,
+	"type": 1,
+	"origin":"http://www.liudatxt.net",
+	"httpHeaders":{
+		"Referer": "http://www.liudatxt.net/",
+		"Host": "www.liudatxt.net",
+		"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15"
+	},
+	"searchMedia":{
+		"requestInfo": "http://www.liudatxt.net/search.php",
+		"method": "POST",
+		"body":{
+			"searchkey": "%@keyword"
+		},
+		"list": "//div[@id=\"sitembox\"]//dl",
+		"title": "//h3/a",
+		"author": "//dd[2]//span[1]",
+		"desc": "//dd[@class=\"book_des\"]",
+		"tag": "//dd[2]//span[3]",
+		"cover": "//img//@src",
+		"url": "//h3//a//@href"
+	},
+	"mediaList":{
+		"requestInfo":"http://www.liudatxt.net/mulu/%@filter-%@page.html",
+		"list": "//div[@id=\"sitebox\"]//dl",
+		"title": "//h3/a",
+		"author": "//dd[2]//span[1]//a",
+		"desc": "//dd[@class=\"book_des\"]",
+		"tag": "//dd[2]//span[3]",
+		"cover": "//img//@data-original",
+		"url": "//h3//a//@href",
+		"pageSize": 20,
+		"requestFilters":[{
+			"name": "玄幻奇幻",
+			"value": "1"
+		},{
+			"name": "武侠仙侠",
+			"value": "2"
+		},{
+			"name": "都市言情",
+			"value": "3"
+		},{
+			"name": "历史军事",
+			"value": "4"
+		},{
+			"name": "科幻灵异",
+			"value": "5"
+		},{
+			"name": "网游竞技",
+			"value": "6"
+		},{
+			"name": "女生频道",
+			"value": "7"
+		}]
+	},
+	"mediaDetail":{
+		"requestInfo": "@js: return requestUrl.match(/\\d+/)[0]",
+		"title": "//div[@id=\"bookinfo\"]//h1",
+		"author": "//span[@id=\"author\"]/a",
+		"desc": "//div[@id=\"bookintro\"]//p",
+		"tag": "//div[@class=\"count\"]/ul/li[1]/span",
+		"cover": "//div[@id=\"bookimg\"]/img/@src",
+		"url": "//div[@id=\"newlist\"]//strong//a/@href"
+	},
+	"chapterList":{
+		"list": "//div[@id=\"readerlist\"]//li",
+		"title": "//a//@title",
+		"url": "//a//@href"
+	},
+	"chapterContent":{
+		"content": "//div[@id=\"content\"]",
+		"javascript": "return result.replace(/<br>/gi,'\\n').replace(/[\\s]{2,}/gi,'\\n').replace(/<i>.*<\\/i>/gi,'')"
+	}
+}
